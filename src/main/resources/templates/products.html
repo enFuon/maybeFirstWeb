@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Our Store</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="header">
+    <h1>enFuon Marketplace</h1>
+    <div class="buttons">
+        <span th:if="${#authorization.expression('isAuthenticated()')}">
+            <a th:href="@{/cart}"><button>Koszyk</button></a>
+            <a th:href="@{/profile}"><button>Profil</button></a>
+            <a th:href="@{/logout}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button>Logout</button></a>
+            <form id="logout-form" th:action="@{/logout}" method="post" style="display: none;"></form>
+        </span>
+        <span th:if="${#authorization.expression('!isAuthenticated()')}">
+            <a th:href="@{/login}"><button>Log in</button></a>
+            <a th:href="@{/register}"><button>Register/Signup</button></a>
+        </span>
+    </div>
+</header>
+<div class="nav-bar">
+    <a th:href="@{/}"><button>HOME</button></a>
+    <button>NEWS</button>
+    <a th:href="@{/products}"><button>PRODUCTS</button></a>
+    <button>ABOUT US</button>
+    <button>CONTACT</button>
+</div>
+<div class="main-content">
+    <h2>Product List</h2>
+    <table class="product-table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.name}">Name</td>
+            <td th:text="${product.description}">Description</td>
+            <td th:text="${product.price}">Price</td>
+            <td th:text="${product.quantityInStock}">Quantity</td>
+            <td>
+                <!-- Tylko zalogowani użytkownicy widzą ten przycisk -->
+                <span th:if="${#authorization.expression('isAuthenticated()')}">
+                    <a th:href="@{/cart/add(productId=${product.id})}" class="button">Dodaj do koszyka</a>
+                </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

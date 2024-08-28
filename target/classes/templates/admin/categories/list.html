@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Category List</title>
+</head>
+<body>
+<h1>Category List</h1>
+<a href="/admin/categories/add">Add New Category</a>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="category : ${categories}">
+        <td th:text="${category.name}">Category Name</td>
+        <td>
+            <!-- Link do edytowania kategorii -->
+            <a th:href="@{/admin/categories/edit/{id}(id=${category.id})}">Edit</a>
+            <!-- Formularz do usuwania kategorii -->
+            <form th:action="@{/admin/categories/delete/{id}(id=${category.id})}" method="post" style="display:inline;">
+                <input type="hidden" name="_method" value="delete" />
+                <button type="submit" onclick="return confirm('Are you sure?')">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="/admin-panel">Back to Admin Panel</a>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Assign Products to Store</title>
+</head>
+<body>
+<h1>Assign Products to Store</h1>
+<form th:action="@{/assign}" method="post">
+    <label>Warehouse:</label>
+    <select name="warehouseId">
+        <option th:each="warehouse : ${warehouses}" th:value="${warehouse.id}" th:text="${warehouse.name}"></option>
+    </select>
+    <br/>
+    <label>Store:</label>
+    <select name="storeId">
+        <option th:each="store : ${stores}" th:value="${store.id}" th:text="${store.name}"></option>
+    </select>
+    <br/>
+    <label>Products:</label>
+    <select multiple name="productIds">
+        <option th:each="product : ${products}" th:value="${product.id}" th:text="${product.name}"></option>
+    </select>
+    <br/>
+    <button type="submit">Assign</button>
+</form>
+<a href="/stores">Back to store list</a>
+</body>
+</html>

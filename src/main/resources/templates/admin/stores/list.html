@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Store List</title>
+</head>
+<body>
+<h1>Stores</h1>
+<a href="admin/stores/add">Add New Store</a>
+<ul>
+    <li th:each="store : ${stores}">
+        <!-- Link do wyświetlenia szczegółów sklepu -->
+        <a th:href="@{/stores/{id}(id=${store.id})}" th:text="${store.name}"></a>
+        <!-- Link do edycji sklepu -->
+        <a th:href="@{/admin/stores/edit/{id}(id=${store.id})}">Edit</a>
+        <!-- Link do usunięcia sklepu -->
+        <a th:href="@{/admin/stores/delete/{id}(id=${store.id})}" onclick="return confirm('Are you sure?')">Delete</a>
+    </li>
+</ul>
+<a href="/admin-panel">Back to Admin Panel</a>
+</body>
+</html>

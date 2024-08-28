@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Produktów</title>
+</head>
+<body>
+<h1>Produkty</h1>
+<ul>
+    <th:block th:each="product : ${products}">
+        <li>
+            <span th:text="${product.name}">Nazwa produktu</span> -
+            <span th:text="${product.price}">Cena produktu</span>
+            <a th:href="@{/cart/add(productId=${product.id})}">KUP</a>
+        </li>
+    </th:block>
+</ul>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Product</title>
+</head>
+<body>
+<h1>Add Product</h1>
+<form th:action="@{/admin/products/add}" method="post">
+    <!-- Pola dla produktu -->
+    <label>Name:</label>
+    <input type="text" name="name" required />
+    <br/>
+    <label>Description:</label>
+    <input type="text" name="description" required />
+    <br/>
+    <label>Price:</label>
+    <input type="number" step="0.01" name="price" required />
+    <br/>
+    <label>Quantity:</label>
+    <input type="number" name="quantityInStock" required />
+    <br/>
+
+    <!-- Dropdown z kategoriami -->
+    <label>Category:</label>
+    <select name="categoryId" required>
+        <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+    </select>
+    <br/>
+
+    <!-- Dropdown z magazynami -->
+    <label>Warehouse:</label>
+    <select name="warehouseId" required>
+        <option th:each="warehouse : ${warehouses}" th:value="${warehouse.id}" th:text="${warehouse.name}"></option>
+    </select>
+    <br/>
+
+    <button type="submit">Save</button>
+</form>
+<a href="/admin/products/list">Back to list</a>
+
+</body>
+</html>

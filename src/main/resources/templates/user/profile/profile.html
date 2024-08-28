@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/css/style.css"> <!-- Używamy tego samego pliku CSS -->
+</head>
+<body>
+<header class="header">
+    <h1>User Profile</h1>
+    <div class="buttons">
+        <span th:if="${#authorization.expression('isAuthenticated()')}">
+            <a th:href="@{/cart}"><button>Koszyk</button></a>
+            <a th:href="@{/profile}"><button>Profil</button></a>
+            <a th:href="@{/logout}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button>Logout</button></a>
+            <form id="logout-form" th:action="@{/logout}" method="post" style="display: none;"></form>
+        </span>
+        <span th:if="${#authorization.expression('!isAuthenticated()')}">
+            <a th:href="@{/login}"><button>Log in</button></a>
+            <a th:href="@{/register}"><button>Register/Signup</button></a>
+        </span>
+    </div>
+</header>
+
+<div class="nav-bar">
+    <a th:href="@{/}"><button>HOME</button></a>
+    <a th:href="@{/products}"><button>PRODUCTS</button></a>
+    <button>ABOUT US</button>
+    <button>CONTACT</button>
+</div>
+
+<div class="main-content">
+    <!-- Sekcja danych użytkownika -->
+    <section class="user-details">
+        <h2>Your Information</h2>
+        <p><strong>Username:</strong> <span th:text="${user.name}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
+        <!-- Możesz dodać więcej informacji o użytkowniku w zależności od tego, co jest dostępne -->
+    </section>
+
+    <!-- Sekcja koszyka użytkownika -->
+    <section class="user-cart">
+        <h2>Your Cart</h2>
+        <div th:if="${cart == null or cart.items.size() == 0}">
+            <p>Your cart is empty.</p>
+        </div>
+        <div th:if="${cart != null and cart.items.size() > 0}">
+            <table class="cart-table">
+                <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${cart.items}">
+                    <td th:text="${item.product.name}">Product Name</td>
+                    <td th:text="${item.quantity}">1</td>
+                    <td th:text="${item.product.price}">100.00</td>
+                    <td>
+                        <form th:action="@{/cart/remove/{id}(id=${item.product.id})}" method="post">
+                            <button type="submit" class="button remove-button">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="/css/style.css"> <!-- Używamy tego samego pliku CSS -->
+</head>
+<body>
+<header class="header">
+    <h1>Admin Panel</h1>
+    <div class="buttons">
+        <span th:if="${#authorization.expression('isAuthenticated()')}">
+            <a th:href="@{/logout}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button>Logout</button></a>
+            <form id="logout-form" th:action="@{/logout}" method="post" style="display: none;"></form>
+        </span>
+        <span th:if="${#authorization.expression('!isAuthenticated()')}">
+            <a th:href="@{/login}"><button>Log in</button></a>
+            <a th:href="@{/register}"><button>Register/Signup</button></a>
+        </span>
+    </div>
+</header>
+
+<div class="nav-bar">
+    <a th:href="@{/admin}"><button>HOME</button></a>
+    <a href="/admin/stores/list"><button>STORES</button></a>
+    <a href="/admin/categories/list"><button>CATEGORIES</button></a>
+    <a href="/admin/products/list"><button>PRODUCTS</button></a>
+    <a href="/admin/warehouses/list"><button>WAREHOUSES</button></a>
+    <a href="/admin/users/list"><button>USERS</button></a>
+</div>
+
+<div class="main-content">
+    <!-- Przycisk do dodawania nowego sklepu -->
+    <h2>Manage Stores</h2>
+    <a href="/admin/stores/add" class="button">Add New Store</a>
+    <a href="/admin/stores/list" class="button">View All Stores</a>
+
+    <!-- Przycisk do dodawania nowych kategorii -->
+    <h2>Manage Categories</h2>
+    <a href="/admin/categories/add" class="button">Add New Category</a>
+    <a href="/admin/categories/list" class="button">View All Categories</a>
+
+    <!-- Przycisk do dodawania nowych produktów -->
+    <h2>Manage Products</h2>
+    <a href="/admin/products/add" class="button">Add New Product</a>
+    <a href="/admin/products/list" class="button">View All Products</a>
+
+    <!-- Przycisk do zarządzania magazynami -->
+    <h2>Manage Warehouses</h2>
+    <a href="/admin/warehouses/add" class="button">Add New Warehouse</a>
+    <a href="/admin/warehouses/list" class="button">View All Warehouses</a>
+
+    <!-- Przycisk do wyświetlania użytkowników -->
+    <h2>Manage Users</h2>
+    <a href="/admin/users/list" class="button">View All Users</a>
+</div>
+</body>
+</html>

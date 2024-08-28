@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>enFuon Marketplace</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="header">
+    <h1>enFuon Marketplace</h1>
+    <div class="buttons">
+        <span th:if="${#authorization.expression('isAuthenticated()')}">
+            <a th:href="@{/cart}"><button>Koszyk</button></a>
+            <a th:href="@{/profile}"><button>Profil</button></a>
+            <a th:href="@{/logout}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button>Logout</button></a>
+            <form id="logout-form" th:action="@{/logout}" method="post" style="display: none;"></form>
+        </span>
+        <span th:if="${#authorization.expression('!isAuthenticated()')}">
+            <a th:href="@{/login}"><button>Log in</button></a>
+            <a th:href="@{/register}"><button>Register/Signup</button></a>
+        </span>
+    </div>
+</header>
+<div class="nav-bar">
+    <a th:href="@{/}"><button>HOME</button></a>
+    <button>NEWS</button>
+    <a th:href="@{/products}"><button>PRODUCTS</button></a>
+    <button>ABOUT US</button>
+    <button>CONTACT</button>
+</div>
+<div class="main-content">
+    <h2>Welcome</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel est eget libero malesuada faucibus. Nulla facilisi. Phasellus vehicula ipsum nec nisi imperdiet, vel ultricies nunc hendrerit. Integer nec nulla vehicula, lacinia nulla et, luctus turpis. Mauris ut varius elit. Vestibulum vehicula urna eu lacus luctus, sed maximus nulla fermentum. Sed congue gravida neque, ut elementum eros tempus a. Cras tristique viverra urna, ac maximus tortor. Sed ut elementum justo, in efficitur lacus. Ut dictum, eros ut viverra fermentum, lectus libero aliquet neque, ac cursus est nulla id libero.</p>
+</div>
+</body>
+</html>

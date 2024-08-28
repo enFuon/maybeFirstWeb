@@ -1,0 +1,257 @@
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.header {
+    width: 100%;
+    background-color: #6a1b9a; /* Fioletowy */
+    color: white;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 60px; /* Stała wysokość belki */
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 24px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.header .buttons {
+    position: absolute;
+    right: 20px;
+}
+
+.header button {
+    background-color: #00bcd4; /* Turkusowy */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.header button:hover {
+    background-color: #0097a7;
+}
+
+.nav-bar {
+    width: 100%;
+    background-color: white;
+    border-bottom: 2px solid #00bcd4; /* Kolor paska oddzielającego */
+    box-sizing: border-box;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-bar button {
+    background-color: transparent;
+    border: none;
+    color: #6a1b9a; /* Fioletowy */
+    font-size: 16px;
+    margin: 0 15px;
+    cursor: pointer;
+}
+
+.nav-bar button:hover {
+    text-decoration: underline;
+}
+
+.main-content {
+    text-align: center;
+    margin: 40px 20px;
+}
+
+.main-content h2 {
+    font-size: 32px;
+    color: #6a1b9a; /* Fioletowy */
+}
+
+.main-content p {
+    max-width: 33%;
+    margin: 0 auto;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Styl dla formularza logowania */
+.login-form {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    color: #6a1b9a; /* Fioletowy */
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    border-color: #00bcd4; /* Turkusowy */
+    outline: none;
+}
+
+.form-actions {
+    text-align: center;
+}
+
+.btn {
+    background-color: #6a1b9a; /* Fioletowy */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #5e1587; /* Ciemniejszy fioletowy */
+}
+
+.register-link {
+    display: block;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #00bcd4; /* Turkusowy */
+    text-decoration: none;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+}
+
+/* Styl dla formularza rejestracji */
+.register-form {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    color: #6a1b9a; /* Fioletowy */
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    border-color: #00bcd4; /* Turkusowy */
+    outline: none;
+}
+
+.form-actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn {
+    background-color: #6a1b9a; /* Fioletowy */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #5e1587; /* Ciemniejszy fioletowy */
+}
+
+.login-link {
+    color: #00bcd4; /* Turkusowy */
+    text-decoration: none;
+}
+
+.login-link:hover {
+    text-decoration: underline;
+}
+
+.alert {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #dff0d8; /* Zielony */
+    color: #3c763d; /* Zielony */
+    border-radius: 5px;
+    border: 1px solid #d6e9c6;
+}
+
+.product-table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-table th, .product-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.product-table th {
+    background-color: #6a1b9a; /* Fioletowy */
+    color: white;
+}
+
+.product-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.product-table td {
+    color: #333;
+}
+
+.product-table td:nth-child(3), .product-table td:nth-child(4) {
+    text-align: center;
+}
+

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Warehouse List</title>
+</head>
+<body>
+<h1>Warehouse List</h1>
+<a href="/admin/warehouses/add">Add New Warehouse</a>
+<ul>
+    <li th:each="warehouse : ${warehouses}">
+        <!-- Link do wyświetlenia szczegółów magazynu -->
+        <a th:href="@{/warehouses/{id}(id=${warehouse.id})}" th:text="${warehouse.name}"></a>
+        <!-- Link do edycji magazynu -->
+        <a th:href="@{/admin/warehouses/edit/{id}(id=${warehouse.id})}">Edit</a>
+        <!-- Link do usunięcia magazynu -->
+        <a th:href="@{/admin/warehouses/delete/{id}(id=${warehouse.id})}" onclick="return confirm('Are you sure?')">Delete</a>
+    </li>
+</ul>
+<a href="/admin-panel">Back to Admin Panel</a>
+</body>
+</html>
